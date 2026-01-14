@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laksa | Micro:bit IoT Loan Management System | UTM</title>
+    <meta name="description" content="A comprehensive relational database solution for automating the borrowing lifecycle of IoT devices within academic institutions. Built with MySQL, normalized to BCNF.">
+    <meta name="keywords" content="Laksa, IoT Loan Management, Micro:bit, Database, MySQL, BCNF, University, Device Lending, SCST1143, Database Engineering">
+    <meta name="author" content="Md Maheyan Islam, Md Foysal, Mahmudul Hoque Sharif, Faiaz Nazeef, Md Mridul Hasan Emon">
+    <link rel="icon" href="https://maheyan.github.io/Laksa/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Laksa | Micro:bit IoT Loan Management System">
+    <meta property="og:description" content="A comprehensive relational database solution for automating the borrowing lifecycle of IoT devices within academic institutions. Built with MySQL, normalized to BCNF.">
+    <meta property="og:image" content="https://maheyan.github.io/Laksa/assets/images/og-image.png">
+    <meta property="og:url" content="https://maheyan.github.io/Laksa/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet & Script -->
+    <link rel="stylesheet" href="https://maheyan.github.io/Laksa/assets/css/styles.css">
+    <script src="https://maheyan.github.io/Laksa/assets/js/script.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            LAKSA
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#schema">Schema</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+        <a href="https://github.com/Maheyan/Laksa/" class="nav-cta" target="_blank">View on GitHub →</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">SCST1143 Database Engineering Project</span>
+                <h1>Micro:bit IoT<br><span>Loan Management</span><br>System</h1>
+                <p class="hero-description">A comprehensive relational database solution for automating the borrowing lifecycle of IoT devices within academic institutions. Built with MySQL, normalized to BCNF.</p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/Maheyan/Laksa/" class="btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        Get Started
+                    </a>
+                    <a href="#schema" class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        View Schema
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="database-diagram">
+                    <div class="diagram-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="diagram-content">
+                        <div class="db-table">
+                            <div class="db-table-header">Student</div>
+                            <div class="db-table-fields">
+                                <div class="db-field pk">student_id</div>
+                                <div class="db-field">matric_no</div>
+                                <div class="db-field">full_name</div>
+                                <div class="db-field">status</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-header">Device</div>
+                            <div class="db-table-fields">
+                                <div class="db-field pk">device_id</div>
+                                <div class="db-field fk">model_id</div>
+                                <div class="db-field">serial_no</div>
+                                <div class="db-field">condition</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-header">Loan</div>
+                            <div class="db-table-fields">
+                                <div class="db-field pk">loan_id</div>
+                                <div class="db-field fk">student_id</div>
+                                <div class="db-field">loaned_at</div>
+                                <div class="db-field">status</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-header">DeviceModel</div>
+                            <div class="db-table-fields">
+                                <div class="db-field pk">model_id</div>
+                                <div class="db-field">model_name</div>
+                                <div class="db-field">max_loan_days</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-header">Reservation</div>
+                            <div class="db-table-fields">
+                                <div class="db-field pk">reservation_id</div>
+                                <div class="db-field fk">student_id</div>
+                                <div class="db-field">priority</div>
+                                <div class="db-field">status</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-header">LoanItem</div>
+                            <div class="db-table-fields">
+                                <div class="db-field pk">loan_item_id</div>
+                                <div class="db-field fk">loan_id</div>
+                                <div class="db-field fk">device_id</div>
+                                <div class="db-field">fine_amount</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-element el-1"></div>
+                    <div class="floating-element el-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-label">Capabilities</span>
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to manage IoT device lending operations efficiently and reliably.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Inventory Management</h3>
+                <p>Real-time tracking of all devices, models, and their physical condition with location mapping.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Loan Automation</h3>
+                <p>Streamlined loan processing with automatic due date tracking, overdue detection, and fine calculation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Reservation System</h3>
+                <p>Priority-based reservation queue allowing students to book specific device models in advance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Maintenance Tracking</h3>
+                <p>Schedule and monitor maintenance windows to ensure damaged devices are not loaned out.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Role-Based Access</h3>
+                <p>Four distinct user roles with granular permissions: Admin, Librarian, Assistant, and Student.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Comprehensive Reporting</h3>
+                <p>Generate detailed reports on loans, fines, popular devices, and overall system statistics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schema Section -->
+    <section class="schema" id="schema">
+        <div class="schema-container">
+            <div class="section-header">
+                <span class="section-label">Architecture</span>
+                <h2 class="section-title">Database Schema</h2>
+                <p class="section-subtitle">11 normalized tables following Third Normal Form (3NF) and BCNF for optimal data integrity.</p>
+            </div>
+            <div class="schema-visual">
+                <div class="schema-grid">
+                    <div class="schema-table">
+                        <div class="schema-table-name">Student</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">student_id</span><span class="schema-field-type">INT PK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">matric_no</span><span class="schema-field-type">VARCHAR(20)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">full_name</span><span class="schema-field-type">VARCHAR(100)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">email</span><span class="schema-field-type">VARCHAR(120)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">status</span><span class="schema-field-type">ENUM</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">Staff</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">staff_id</span><span class="schema-field-type">INT PK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">staff_no</span><span class="schema-field-type">VARCHAR(20)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">full_name</span><span class="schema-field-type">VARCHAR(100)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">role</span><span class="schema-field-type">ENUM</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">DeviceModel</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">model_id</span><span class="schema-field-type">INT PK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">model_name</span><span class="schema-field-type">VARCHAR(80)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">manufacturer</span><span class="schema-field-type">VARCHAR(80)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">max_loan_days</span><span class="schema-field-type">INT</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">Device</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">device_id</span><span class="schema-field-type">INT PK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">model_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">serial_no</span><span class="schema-field-type">VARCHAR(60)</span></div>
+                            <div class="schema-field"><span class="schema-field-name">condition</span><span class="schema-field-type">ENUM</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">location_id</span><span class="schema-field-type">INT FK</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">Loan</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">loan_id</span><span class="schema-field-type">BIGINT PK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">student_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">approved_by_staff_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">due_at</span><span class="schema-field-type">DATETIME</span></div>
+                            <div class="schema-field"><span class="schema-field-name">status</span><span class="schema-field-type">ENUM</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">LoanItem</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">loan_item_id</span><span class="schema-field-type">BIGINT PK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">loan_id</span><span class="schema-field-type">BIGINT FK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">device_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">fine_amount</span><span class="schema-field-type">DECIMAL</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">Reservation</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">reservation_id</span><span class="schema-field-type">INT PK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">student_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">model_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">priority</span><span class="schema-field-type">INT</span></div>
+                        </div>
+                    </div>
+                    <div class="schema-table">
+                        <div class="schema-table-name">Maintenance</div>
+                        <div class="schema-table-body">
+                            <div class="schema-field primary"><span class="schema-field-name">maintenance_id</span><span class="schema-field-type">INT PK</span></div>
+                            <div class="schema-field foreign"><span class="schema-field-name">device_id</span><span class="schema-field-type">INT FK</span></div>
+                            <div class="schema-field"><span class="schema-field-name">maint_start</span><span class="schema-field-type">DATETIME</span></div>
+                            <div class="schema-field"><span class="schema-field-name">status</span><span class="schema-field-type">ENUM</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="section-header">
+            <span class="section-label">Group 5</span>
+            <h2 class="section-title">Meet The Team</h2>
+            <p class="section-subtitle">The brilliant minds behind the Laksa project.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://maheyan.github.io/Laksa/assets/images/Maheyan.jpg" alt="Md Maheyan Islam">
+                </div>
+                <h3>Md Maheyan Islam</h3>
+                <p class="matric">A25MJ4015</p>
+                <p class="role">Team Lead</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://maheyan.github.io/Laksa/assets/images/Foysal.jpg" alt="Md Foysal">
+                </div>
+                <h3>Md Foysal</h3>
+                <p class="matric">A25MJ4014</p>
+                <p class="role">Database Designer</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://maheyan.github.io/Laksa/assets/images/Sohad.jpg" alt="Mahmudul Hoque Sharif">
+                </div>
+                <h3>Mahmudul Hoque Sharif</h3>
+                <p class="matric">A25MJ4012</p>
+                <p class="role">SQL Developer</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://maheyan.github.io/Laksa/assets/images/Faiyaz.jpg" alt="Faiaz Nazeef">
+                </div>
+                <h3>Faiaz Nazeef</h3>
+                <p class="matric">A25MJ4009</p>
+                <p class="role">Documentation</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://maheyan.github.io/Laksa/assets/images/Emon.jpg" alt="Md Mridul Hasan Emon">
+                </div>
+                <h3>Md Mridul Hasan Emon</h3>
+                <p class="matric">A25MJ4016</p>
+                <p class="role">Testing & QA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="section-header">
+            <span class="section-label">Built With</span>
+            <h2 class="section-title">Technology Stack</h2>
+        </div>
+        <div class="tech-logos">
+            <div class="tech-item">
+                <div class="tech-icon">🐬</div>
+                <span>MySQL 8.0+</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔧</div>
+                <span>MySQL Workbench</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">📊</div>
+                <span>InnoDB Engine</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔐</div>
+                <span>3NF/BCNF</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">⚡</div>
+                <span>Indexed Queries</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <span class="course">SCST1143-15 Database Engineering</span>
+                <span class="university">Universiti Teknologi Malaysia • Session 2025/2026</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/Maheyan/Laksa/" target="_blank">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#schema">Schema</a>
+                <a href="#team">Team</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
